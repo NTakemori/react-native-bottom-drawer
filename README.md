@@ -2,8 +2,6 @@
 Updated version of github.com/jacklein/rn-bottom-drawer
 Credit to jacklein for the logic
 
-install with ```npm install react-native-bottom-drawer```
-
 required: 
 
 containerHeight - integer - height of the drawer
