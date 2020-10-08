@@ -15,6 +15,7 @@ function BottomDrawer(props) {
     Animated.spring(pan, {
       toValue: pos,
       useNativeDriver: false,
+      friction: 100
     }).start();
     callback();
   };
@@ -27,6 +28,7 @@ function BottomDrawer(props) {
   };
 
   const handlePanResponderRelease = (e, gestureState) => {
+    // console.log(gestureState.dy === pan._value)
     pan.flattenOffset();
     if (gestureState.dy > TOGGLE_THRESHOLD && curPosition == "up") {
       handleTransition(DOWN_POSITION, props.onCollapsed);
@@ -45,14 +47,18 @@ function BottomDrawer(props) {
 
   const panResponder = useRef(
     PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponderCapture: () => true,
       onPanResponderGrant: () => {
+        // console.log("grant")
         pan.setOffset(pan._value);
+        pan.setValue(0);
       },
       onPanResponderMove: Animated.event([null, { dy: pan }], {
         useNativeDriver: false,
       }),
       onPanResponderRelease: handlePanResponderRelease,
+      // onPanResponderEnd: () => pan.setOffset(pan._value),
     })
   ).current;
 
@@ -78,4 +84,3 @@ BottomDrawer.defaultProps = {
   onCollapsed: () => {},
 };
 export default BottomDrawer;
-
