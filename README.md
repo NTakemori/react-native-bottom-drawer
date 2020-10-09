@@ -2,6 +2,8 @@
 Updated version of github.com/jacklein/rn-bottom-drawer
 Credit to jacklein for the logic
 
+install: ```npm i @ntakemori/rn-bottom-drawer```
+
 required: 
 
 containerHeight - integer - height of the drawer
