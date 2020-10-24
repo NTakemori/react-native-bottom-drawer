@@ -22,3 +22,13 @@ functions (non mandatory):
 onExpand()   - called on expand
 
 onCollapse() - called on collapse 
+
+
+To use TouchableOpacity in your child: 
+const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
+
+<AnimatedTouchable onPress={this.foo}>
+  
+  <Text>Foo</Text>
+  
+</AnimatedTouchable>
