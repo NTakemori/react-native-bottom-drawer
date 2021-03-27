@@ -28,7 +28,7 @@ function BottomDrawer(props) {
   };
 
   const handlePanResponderRelease = (e, gestureState) => {
-    // console.log(gestureState.dy === pan._value)
+    
     pan.flattenOffset();
     if (gestureState.dy > TOGGLE_THRESHOLD && curPosition == "up") {
       handleTransition(DOWN_POSITION, props.onCollapsed);
@@ -50,7 +50,6 @@ function BottomDrawer(props) {
       onMoveShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
       onPanResponderGrant: () => {
-        // console.log("grant")
         pan.setOffset(pan._value);
         pan.setValue(0);
       },
@@ -58,7 +57,6 @@ function BottomDrawer(props) {
         useNativeDriver: false,
       }),
       onPanResponderRelease: handlePanResponderRelease,
-      // onPanResponderEnd: () => pan.setOffset(pan._value),
     })
   ).current;
 
